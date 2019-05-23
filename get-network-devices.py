@@ -79,3 +79,18 @@ def getNetworkDevices(ticket):
 
 theTicket=getTicket()
 getNetworkDevices(theTicket)
+v=response.json()
+#=response.json()
+#k=json.dumps(response.json(), indent=4, separators=(',', ': '))
+for i in v:
+    if i=="response":
+            print("Host Ip =",v[i][0]['hostIp'])
+            print("Host Mac=",v[i][0]['hostMac'])
+            print("Host Ip =",v[i][1]['hostIp'])
+            print("Host Mac=",v[i][1]['hostMac'])
+            print("Host Ip =",v[i][2]['hostIp'])
+            print("Host Mac=",v[i][2]['hostMac'])
+	    hostIP=+1
+            hostmac=+1
+           print(hostIP)
+           print(hostmac)
