@@ -52,7 +52,7 @@ ticket = r_json["response"]["serviceTicket"]
 
 # URL for Host REST API call to get list of exisitng hosts on the network.
 url = "https://" + controller + "/api/v1/host?limit=1&offset=1"
-
+url2 =" https://" + controller + "/api/v1/host/count"
 #Content type must be included in the header as well as the ticket
 header = {"content-type": "application/json", "X-Auth-Token":ticket}
 
@@ -61,9 +61,24 @@ response = requests.get(url, headers=header, verify=False)
 
 # json.dumps serializes the json into a string and allows us to
 # print the response in a 'pretty' format with indentation etc.
-print ("Hosts = ")
+#print ("Hosts = ")
 print (json.dumps(response.json(), indent=4, separators=(',', ': ')))
 
 r_resp=response.json()
 
-print(r_resp["response"][0]["hostIp"])
+#print(r_resp["response"][0]["hostIp"])
+v=response.json()
+
+#print(r_resp["response"][0]["hostIp"])
+
+#=response.json()
+#k=json.dumps(response.json(), indent=4, separators=(',', ': '))
+for i in v:
+    if i=="response":
+            print("Host Ip =",v[i][0]['hostIp'])
+            print("Host Mac=",v[i][0]['hostMac'])
+            print("Host Ip =",v[i][1]['hostIp'])
+            print("Host Mac=",v[i][1]['hostMac'])
+            print("Host Ip =",v[i][2]['hostIp'])
+            print("Host Mac=",v[i][2]['hostMac'])
+
